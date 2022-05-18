@@ -11,5 +11,10 @@ steps:
 
   - name: aws-cdk
     image: eignhpants/docker-aws-cdk
+    environment:
+      AWS_ACCESS_KEY_ID:
+        from_secret: sheeta_aws_key
+      AWS_SECRET_ACCESS_KEY:
+        from_secret: sheeta_aws_secret
     commands:
     - cdk synth
