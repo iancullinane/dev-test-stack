@@ -18,3 +18,4 @@ steps:
         from_secret: sheeta_aws_secret
     commands:
     - cdk synth
+    - cdk deploy
