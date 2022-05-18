@@ -22,12 +22,12 @@ export class StaticSite extends Construct {
       ? `${props.siteSubDomain}.${props.domainName}`
       : `${props.domainName}`;
 
-    const hostedZone = new pants.HostedZoneLookupStack(this, `hostedzone`, {
+    const hostedZone = new pants.HostedZoneLookupStack(this, `hostedzone-${props.domainName}`, {
       // const zone = route53.HostedZone.fromHostedZoneId(this, 'GMCTopLevelZone', props.hostedZoneID);
-      domainName: fqdn
+      domainName: props.domainName
     })
 
-    new pants.StaticSiteWithCloudfront(this, `site-stack`, {
+    new pants.StaticSiteWithCloudfront(this, `site-stack-${fqdn}`, {
       hostedZone: hostedZone.hz,
       fqdn
     })
