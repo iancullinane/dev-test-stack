@@ -27,7 +27,7 @@ export class StaticSite extends Construct {
       domainName: fqdn
     })
 
-    const siteStack = new pants.StaticSiteWithCloudfront(this, `site-stack`, {
+    new pants.StaticSiteWithCloudfront(this, `site-stack`, {
       hostedZone: hostedZone.hz,
       fqdn
     })
